@@ -1,68 +1,171 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="150" src="https://material-ui.com/static/images/material-ui-logo.svg" alt="Material-UI logo"></a></p>
+</p>
 
-## Available Scripts
+<h1 align="center">Material-UI</h1>
 
-In the project directory, you can run:
+<div align="center">
 
-### `npm start`
+[React](http://facebook.github.io/react/) components that implement [Google's Material Design](https://www.google.com/design/spec/material-design/introduction.html).
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![npm package](https://img.shields.io/npm/v/@material-ui/core/latest.svg)](https://www.npmjs.com/package/@material-ui/core)
+[![npm downloads](https://img.shields.io/npm/dm/@material-ui/core.svg)](https://www.npmjs.com/package/@material-ui/core)
+[![CircleCI](https://img.shields.io/circleci/project/github/mui-org/material-ui/master.svg)](https://circleci.com/gh/mui-org/material-ui/tree/master)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/material-ui)
+[![Coverage Status](https://img.shields.io/codecov/c/github/mui-org/material-ui/master.svg)](https://codecov.io/gh/mui-org/material-ui/branch/master)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1320/badge)](https://bestpractices.coreinfrastructure.org/projects/1320)
+![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/MaterialUI.svg?label=follow+Material-UI)](https://twitter.com/MaterialUI)
+[![PeerDependencies](https://david-dm.org/mui-org/material-ui/master/peer-status.svg?path=packages/material-ui)](https://david-dm.org/mui-org/material-ui/master?type=peer&path=packages/material-ui)
+[![Dependencies](https://david-dm.org/mui-org/material-ui/master/status.svg?path=packages/material-ui)](https://david-dm.org/mui-org/material-ui/master?path=packages/material-ui)
+[![DevDependencies](https://david-dm.org/mui-org/material-ui/master/dev-status.svg?path=packages/material-ui)](https://david-dm.org/mui-org/material-ui/master?type=dev)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](http://isitmaintained.com/project/mui-org/material-ui "Average time to resolve an issue")
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/material-ui-docs/localized.svg?cache=v1)](https://translate.material-ui.com/project/material-ui-docs)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+</div>
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Material-UI is available as an [npm package](https://www.npmjs.com/package/@material-ui/core).
 
-### `npm run build`
+**[Stable channel v4](https://material-ui.com/)**
+```sh
+// with npm
+npm install @material-ui/core
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// with yarn
+yarn add @material-ui/core
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+**[v3.x](https://v3-9-0.material-ui.com/)** ([Migration From v3 to v4](https://material-ui.com/guides/migration-v3/))
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**[v0.x](https://v0.material-ui.com/)** ([Migration to v1](https://material-ui.com/guides/migration-v0x/))
 
-### `npm run eject`
+Please note that `@next` will only point to pre-releases; to get the latest stable release use `@latest` instead.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Supporting Material-UI
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Material-UI is an MIT-licensed open source project. It's an independent project with ongoing development made possible thanks to the support of these awesome [backers](/BACKERS.md). If you'd like to join them, please consider:
+- [Become a backer or sponsor on Patreon](https://www.patreon.com/oliviertassinari).
+- [Become a backer or sponsor on OpenCollective](https://opencollective.com/material-ui).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### What's the difference between Patreon and OpenCollective?
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Funds donated via Patreon directly support [Olivier Tassinari](https://github.com/oliviertassinari)'s work on Material-UI.
+Funds donated via OpenCollective are managed transparently and will be used for compensating work and expenses for core team members.
+Your name/logo will receive proper recognition and exposure by donating on either platform.
 
-## Learn More
+### Gold Sponsors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Gold Sponsors are those who have pledged $500/month and more to Material-UI.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+via [Patreon](https://www.patreon.com/oliviertassinari)
 
-### Code Splitting
+<p style="display: flex; justify-content: center;">
+  <a data-ga-event-category="sponsors" data-ga-event-action="logo" data-ga-event-label="creative-tim" href="https://www.creative-tim.com/?partner=104080" rel="noopener" target="_blank" style="margin-right: 16px;"><img width="126" src="https://github.com/creativetimofficial.png?size=126" alt="creative-tim" title="Premium Themes"></a>
+  <a data-ga-event-category="sponsors" data-ga-event-action="logo" data-ga-event-label="tidelift" href="https://tidelift.com/subscription/pkg/npm-material-ui?utm_source=material_ui&utm_medium=referral&utm_campaign=homepage" rel="noopener" target="_blank" style="margin-right: 16px;"><img width="96" src="https://github.com/tidelift.png?size=96" alt="tidelift" title="Get Professionally Supported Material-UI"></a>
+  <a data-ga-event-category="sponsors" data-ga-event-action="logo" data-ga-event-label="bitsrc" href="https://bit.dev" rel="noopener" target="_blank" style="margin-right: 16px;"><img width="96" src="https://github.com/teambit.png?size=96" alt="bitsrc" title="The fastest way to share code"></a>
+  <a data-ga-event-category="sponsors" data-ga-event-action="logo" data-ga-event-label="blokt" href="https://blokt.com/" rel="noopener" target="_blank" style="margin-right: 16px;"><img width="96" src="https://pbs.twimg.com/profile_images/927547020134502405/zY3QPxmz_200x200.jpg" alt="blokt" title="Leading Cryptocurrency News"></a>
+</p>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+via [OpenCollective](https://opencollective.com/material-ui)
 
-### Analyzing the Bundle Size
+<p style="display: flex; justify-content: center; flex-wrap: wrap;">
+  <a data-ga-event-category="sponsors" data-ga-event-action="logo" data-ga-event-label="callemall" href="https://www.call-em-all.com" rel="noopener" target="_blank" style="margin-right: 16px;"><img src="https://images.opencollective.com/proxy/images?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2Ff4053300-e0ea-11e7-acf0-0fa7c0509f4e.png&height=100" alt="callemall" title="The easy way to message your group"></a>
+  <a data-ga-event-category="sponsors" data-ga-event-action="logo" data-ga-event-label="localize" href="https://localizejs.com" rel="noopener" target="_blank" style="margin-right: 16px;"><img src="https://images.opencollective.com/proxy/images?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F629dea80-f1ae-11e8-b356-a5942970e22b.png&height=65" alt="localize" title="Application translation & localization platform"></a>
+</p>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### There is more!
 
-### Making a Progressive Web App
+See the full list of [our backers](https://material-ui.com/discover-more/backers/).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Usage
 
-### Advanced Configuration
+Here is a quick example to get you started, **it's all you need**:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@material-ui/core/Button';
 
-### Deployment
+function App() {
+  return (
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+  );
+}
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
 
-### `npm run build` fails to minify
+Yes, it's really all you need to get started as you can see in this live and interactive demo:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/4j7m47vlm4)
+
+## Questions
+
+For *how-to* questions and other non-issues,
+please use [StackOverflow](http://stackoverflow.com/questions/tagged/material-ui) instead of Github issues.
+There is a StackOverflow tag called "material-ui" that you can use to tag your questions.
+
+## Examples
+
+Are you looking for an example project to get started?
+[We host some](https://material-ui.com/getting-started/example-projects/).
+
+## Documentation
+
+Check out our [documentation website](https://material-ui.com/).
+
+## Contributing
+
+We'd greatly appreciate any [contribution](/CONTRIBUTING.md) you make. :)
+
+## Changelog
+
+Recently Updated?
+Please read the [changelog](https://github.com/mui-org/material-ui/releases).
+
+## Roadmap
+
+The future plans and high priority features and enhancements can be found in the [ROADMAP.md](https://material-ui.com/discover-more/roadmap/) file.
+
+## Thanks
+
+Material-UI is only made possible thanks to these great services that sponsor our core infrastructure:
+
+[<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" width="120">](https://github.com/)
+
+GitHub allows us to host the Git repository.
+
+[<img src="https://assets.brandfolder.com/otz6k5-cj8pew-e4rk9u/element.png?v=1501538594" width="120">](https://circleci.com/)
+
+CircleCI allows us to run the test suite.
+
+[<img src="https://cdn.netlify.com/15ecf59b59c9d04b88097c6b5d2c7e8a7d1302d0/1b6d6/img/press/logos/full-logo-light.svg" width="120">](https://www.netlify.com/)
+
+Netlify allows us to distribute the documentation.
+
+[<img src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png" width="120">](https://crowdin.com/)
+
+CrowdIn allows us to translate the documentation.
+
+[<img src="https://www.browserstack.com/images/mail/browserstack-logo-footer.png" width="120">](https://www.browserstack.com/)
+
+BrowserStack allows us to test in real browsers.
+
+[<img src="https://raw.githubusercontent.com/codecov/media/master/logos/icon-50.png" height="30">](https://codecov.io/)
+
+CodeCov allows us to monitor the test coverage.
+
+## License
+
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
+
+## Security
+
+To report a security vulnerability, please use the
+[Tidelift security contact](https://tidelift.com/security).
+Tidelift will coordinate the fix and disclosure.

@@ -1,23 +1,23 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# The best pattern people should follow is ignoring the editors' files in their
+# global .gitignore configuration file.
+# However, in order to prevent issues. We also ignore editors' files here.
+.idea
+.vscode
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
+*.log
+.DS_STORE
+/.eslintcache
+/.next
+/.nyc_output
 /coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/docs/export
+/examples/**/.cache
+/packages/material-ui-codemod/lib
+/packages/material-ui-icons/material-io-tools-icons
+/test/regressions/screenshots
+/test/selenium-output
+/tmp
+build
+node_modules
+package-lock.json
+size-snapshot.json
