@@ -50,7 +50,8 @@ function AppAppBar(props) {
             className={classes.title}
             href="/"
           >
-            {'(주)도울정보기술'}
+            {/*'(주)도울정보기술'*/}
+            <img src="/static/logo.png" alt="logo" />
           </Link>
           <div className={classes.right}>
             <Link
@@ -60,7 +61,7 @@ function AppAppBar(props) {
               className={classes.rightLink}
               href="/onepirate/sign-in/"
             >
-              {'Sign In'}
+              {'Login'}
             </Link>
             <Link
               variant="h6"

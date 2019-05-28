@@ -41,7 +41,7 @@ function ProductHero(props) {
         당신의 꿈을 펼쳐보세요
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        #Dream #Programer #Designer 
       </Typography>
       <Button
         color="secondary"

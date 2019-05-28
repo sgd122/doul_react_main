@@ -6,7 +6,7 @@ import SignUp from 'docs/src/pages/onepirate/SignUp';
 
 function Page() {
   return (
-    <AppTheme title="Onepirate theme - Material-UI" description="A onepirate theme">
+    <AppTheme title="(주)도울정보기술" description="A onepirate theme">
       <SignUp />
     </AppTheme>
   );

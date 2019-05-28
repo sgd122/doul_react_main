@@ -58,12 +58,12 @@ class SignIn extends React.Component {
         <AppForm>
           <React.Fragment>
             <Typography variant="h3" gutterBottom marked="center" align="center">
-              Sign In
+              Login
             </Typography>
             <Typography variant="body2" align="center">
-              {'Not a member yet? '}
+              {'아직 회원이 아니세요? '}
               <Link href="/onepirate/sign-up/" align="center" underline="always">
-                Sign Up here
+                회원가입(Sign Up)
               </Link>
             </Typography>
           </React.Fragment>
@@ -114,14 +114,14 @@ class SignIn extends React.Component {
                   color="secondary"
                   fullWidth
                 >
-                  {submitting || sent ? 'In progress…' : 'Sign In'}
+                  {submitting || sent ? 'In progress…' : '로그인'}
                 </FormButton>
               </form>
             )}
           </Form>
           <Typography align="center">
             <Link underline="always" href="/onepirate/forgot-password/">
-              Forgot password?
+              비밀번호를 잊으셨나요?
             </Link>
           </Typography>
         </AppForm>
