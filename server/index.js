@@ -32,7 +32,7 @@ app.use(serveStatic(path.join(__dirname, './../docs/export')));
 
 app.use(
     function (req, res, next) {
-        console.log('middle wared was called : first');
+        // console.log('middle wared was called : first');
         //res.redirect('http://google.co.kr');
  
         //req 여러 정보를 얻어 올 수 있는데 그중
