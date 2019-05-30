@@ -42,7 +42,7 @@ util.parseError = function(errors){ //3
 // middlewares
 util.isLoggedin = function(req,res,next){ //4
   // var token = req.headers['x-access-token'];
-  let token = req.cookies.user;
+  let token = req.cookies.jwt;
   if (!token){ 
   	return res.json(util.successFalse(null,'token is required!'));  	
   }else {    

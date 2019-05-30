@@ -216,9 +216,11 @@
     "packages/*"
   ],
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "convert-css-length": "^1.0.2",
     "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
     "forever": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "jss-plugin-camel-case": "^10.0.0-alpha.7",
@@ -233,6 +235,8 @@
     "nprogress": "^0.2.0",
     "oracledb": "^3.1.2",
     "prismjs": "^1.16.0",
+    "react-cookie": "^4.0.0",
+    "react-cookies": "^0.1.1",
     "serve-static": "^1.14.1"
   }
 }

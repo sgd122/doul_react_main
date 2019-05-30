@@ -38,12 +38,12 @@ exports.tokenCreate = function(req, res){
   return token;
 }
 
-exports.login = function(req, res, next){
-
-	var userId = req.query.userId;
-    var userPw = req.query.userPw;
-    
-	connection.query('select * from g5_member  where mb_id=? and mb_email=?',[userId,userPw], function(err, rows, fields) {
+exports.post_login = function(req, res, next){
+	
+	var userId = req.body.userId;
+    var userPw = req.body.userPw;
+    console.log(userId+"/"+userPw);
+	connection.query('select * from g5_member  where mb_email=? and mb_no=?',[userId,userPw], function(err, rows, fields) {
 	  if (!err){
 	  	if (rows[0]!=undefined) {
 		    console.log('The solution is: ', rows);
@@ -52,7 +52,7 @@ exports.login = function(req, res, next){
     		let token = exports.tokenCreate(req, res);
 
 		    // 생성한 토큰을 쿠키에 저장
-		    res.cookie("user", token);		    
+		    res.cookie("jwt", token);		    
 
 		    // res.send(rows);
 		    var result = 'rows : ' + JSON.stringify(rows) + '<br><br>' +
