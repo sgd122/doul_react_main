@@ -216,8 +216,11 @@
     "packages/*"
   ],
   "dependencies": {
+    "body-parser": "^1.19.0",
     "convert-css-length": "^1.0.2",
+    "cookie-parser": "^1.4.4",
     "forever": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
     "jss-plugin-camel-case": "^10.0.0-alpha.7",
     "jss-plugin-default-unit": "^10.0.0-alpha.7",
     "jss-plugin-global": "^10.0.0-alpha.7",
@@ -226,6 +229,7 @@
     "jss-plugin-rule-value-function": "^10.0.0-alpha.7",
     "jss-plugin-vendor-prefixer": "^10.0.0-alpha.7",
     "marked": "^0.6.2",
+    "mysql": "^2.17.1",
     "nprogress": "^0.2.0",
     "oracledb": "^3.1.2",
     "prismjs": "^1.16.0",

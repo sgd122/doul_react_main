@@ -4,7 +4,7 @@ const app = express();
 var http = require('http');
 const path = require("path");
 var serveStatic = require('serve-static');      //특정 폴더의 파일들을 특정 패스로 접근할 수 있도록 열어주는 역할
-
+const cookieParser = require('cookie-parser');
 
 const clientApp = path.join(__dirname, '../docs/export');
 
@@ -14,6 +14,8 @@ app.set('port', 8080);
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
+    
+app.use(cookieParser());
 
 console.log(clientApp);
 app.use('/backend', require('./routes/index')); // api 라우팅처리 후
