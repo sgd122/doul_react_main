@@ -30,7 +30,7 @@ util.getServerIp = function(req){ //1
 };
 
 
-util.successTrue = function(data){ //1 
+util.successTrue = function(data){ //1   
   return {
     success:true,
     message:null,
@@ -67,29 +67,53 @@ util.parseError = function(errors){ //3
 // middlewares
 util.isLoggedin = function(req,res,next){ //4
   // var token = req.headers['x-access-token'];
-  console.log("::lanHost::"+lanHost+"=>"+util.getServerIp(req));
-
-  if(util.getServerIp(req) == "::1"){
-	console.log("localhost");  	
-  }
-  // var addr = socket.address();
-  // console.log('클라이언트가 접속했습니다. : %s, %d', addr.address, addr.port);
-
+  
   let token = req.cookies.jwt;
   if (!token){ 
-  	return res.json(util.successFalse(null,'token is required!'));  	
+  	// return res.json(util.successFalse(null,'token is required!'));  	
+  	console.log("token is required!");
+  	if(util.getServerIp(req) == "::1"){	//로컬호스트 예외처리
+		console.log("localhost");  	
+		next();
+	}else{
+		return res.json(util.successFalse(null,'token is required!'));  	
+	}
   }else {    
     jwt.verify(token, secretObj.secret, function(err, decoded) {
 		if(err){
-			return res.json(util.successFalse(err));
+			console.log(util.successFalse(err));
+			if(util.getServerIp(req) == "::1"){	//로컬호스트 예외처리
+				console.log("localhost");  	
+				next();
+			}else{
+				return res.json(util.successFalse(err));
+			}
 		}else{
-			console.log("권한이 있어서 API 수행 가능");
-			// return true;
 			req.decoded = decoded;
+
+			/******************
+			* 토큰 기간갱신
+			*******************/ 
+			// 토큰생성
+    		let token = util.tokenRefresh(req, res, next);
+
+		    // 생성한 토큰을 쿠키에 저장
+		    res.cookie("jwt", token);		    
+		    /******************
+			* 토큰 기간갱신
+			*******************/ 
+
+			console.log("권한이 있어서 API 수행 가능");
+			console.log(decoded);
+			console.log(decoded.id);
+			console.log(decoded.pw);
+			// return true;
+			
 			next();
 		}
 	});
   }
+  
 };
 
 // 토큰 생성
@@ -101,10 +125,23 @@ util.tokenCreate = function(req,res,next){
   },
   secretObj.secret ,    // 비밀 키
   {
-    expiresIn: '5m'    // 유효 시간은 5분
+    expiresIn: '50m'    // 유효 시간은 50분
   });
+  
+  return token;
+}
 
-  console.log(token);
+// 토큰 기간연장
+util.tokenRefresh = function(req,res,next){
+  // default : HMAC SHA256
+  let token = jwt.sign({
+    id: req.decoded.id,   // 토큰의 내용(payload)
+    pw: req.decoded.pw
+  },
+  secretObj.secret ,    // 비밀 키
+  {
+    expiresIn: '50m'    // 유효 시간은 50분
+  });
   
   return token;
 }

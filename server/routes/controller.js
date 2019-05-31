@@ -14,8 +14,6 @@ const address = require('address');
 const lanHost = address.ip();
 
 exports.post_login = function(req, res, next){
-	
-	console.log("::lanHost::"+lanHost+"=>"+util.getServerIp(req));
 
 	var userId = req.body.userId;
     var userPw = req.body.userPw;
@@ -23,7 +21,7 @@ exports.post_login = function(req, res, next){
 	connection.query('select * from g5_member  where mb_email=? and mb_no=?',[userId,userPw], function(err, rows, fields) {
 	  if (!err){
 	  	if (rows[0]!=undefined) {
-		    console.log('The solution is: ', rows);
+		    // console.log('The solution is: ', rows);
 
 		    // 토큰생성
     		let token = util.tokenCreate(req, res, next);
@@ -35,8 +33,9 @@ exports.post_login = function(req, res, next){
 	        // 	token: token,
 	        // 	rows:rows
 	        // });
-
-	        res.json(err||!rows? util.successFalse(err): util.successTrue(rows));
+	        let v_return = util.successTrue(rows);
+	        v_return.token = token;
+	        res.json(err||!rows? util.successFalse(err): v_return);
         }else{
         	console.log("no data");
         	res.json(util.successFalse(null,null)); 
@@ -57,7 +56,7 @@ exports.list = function(req, res, next){
 	connection.query('select * from g5_member', function(err, rows, fields) {
 	  if (!err){
 	    if (rows[0]!=undefined) {
-		    console.log('The solution is: ', rows);
+		    // console.log('The solution is: ', rows);
 		    // res.send(rows);
 		    var result = 'rows : ' + JSON.stringify(rows) + '<br><br>' +
 	                'fields : ' + JSON.stringify(fields);

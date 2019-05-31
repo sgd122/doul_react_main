@@ -68,8 +68,15 @@ class SignIn extends React.Component {
     .then(function (response) {
       // cookie.save('user',response.data.token, { path: '/'});
       console.log(response);
+      console.log(response.data.success);
+      if(response.data.success){
+        console.log(response.data.token);
+      }else{
+        console.log(response.data.message);
+        alert(response.data.message);
+      }
       // console.log(response.data.token);
-      // console.log(response.data.rows[0].mb_no);
+      // console.log(response.data.data[0].mb_no);
     })
     .catch(function (error) {
       console.log(error);
