@@ -67,6 +67,7 @@ class SignIn extends React.Component {
     })
     .then(function (response) {
       // cookie.save('user',response.data.token, { path: '/'});
+      console.log(response);
       // console.log(response.data.token);
       // console.log(response.data.rows[0].mb_no);
     })
@@ -76,21 +77,21 @@ class SignIn extends React.Component {
 
     
 
-    axios.get('http://localhost:8080/backend/list', {
-      headers: { // 요청 헤더
-        'Content-type': 'application/x-www-form-urlencoded'
-      }
-      ,userId: e.email
-      ,userPw: e.password
-      // timeout: 1000 // 1초 이내에 응답이 오지 않으면 에러로 간주
-    })
-    .then(function (response) {
-      console.log(response);
-      // console.log(response.data.rows[0].mb_no);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  //   axios.get('http://localhost:8080/backend/list', {
+  //     headers: { // 요청 헤더
+  //       'Content-type': 'application/x-www-form-urlencoded'
+  //     }
+  //     ,userId: e.email
+  //     ,userPw: e.password
+  //     // timeout: 1000 // 1초 이내에 응답이 오지 않으면 에러로 간주
+  //   })
+  //   .then(function (response) {
+  //     console.log(response);
+  //     // console.log(response.data.rows[0].mb_no);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 
   };
 

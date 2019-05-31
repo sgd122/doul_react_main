@@ -87,4 +87,15 @@ appServer.listen(app.get('port'),
  
 );
 
+//클라이언트 연결 이벤트 처리
+appServer.on('connection', function(socket){
+    var addr = socket.address();
+    console.log('클라이언트가 접속했습니다. : %s, %d', addr.address, addr.port);
+});
+
+//서버 종료 이벤트 처리
+appServer.on('close', function(){
+    console.log('서버가 종료됩니다.');
+});
+
 // app.listen(8080, () => console.log("Listening on port 8080!"));

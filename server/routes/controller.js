@@ -10,36 +10,13 @@ connection.connect();
 /*******************************
 * mysql setting
 ********************************/
-
-
-/*******************************
-* jwt setting
-********************************/
-let jwt = require("jsonwebtoken");
-let secretObj = require("../config/jwt");
-/*******************************
-* jwt setting
-********************************/
-
-// 토큰 생성
-exports.tokenCreate = function(req, res){
-  // default : HMAC SHA256
-  let token = jwt.sign({
-    id: req.query.userId,   // 토큰의 내용(payload)
-    pw: req.query.userPw
-  },
-  secretObj.secret ,    // 비밀 키
-  {
-    expiresIn: '5m'    // 유효 시간은 5분
-  });
-
-  console.log(token);
-  
-  return token;
-}
+const address = require('address');
+const lanHost = address.ip();
 
 exports.post_login = function(req, res, next){
 	
+	console.log("::lanHost::"+lanHost+"=>"+util.getServerIp(req));
+
 	var userId = req.body.userId;
     var userPw = req.body.userPw;
     console.log(userId+"/"+userPw);
@@ -49,22 +26,20 @@ exports.post_login = function(req, res, next){
 		    console.log('The solution is: ', rows);
 
 		    // 토큰생성
-    		let token = exports.tokenCreate(req, res);
+    		let token = util.tokenCreate(req, res, next);
 
 		    // 생성한 토큰을 쿠키에 저장
 		    res.cookie("jwt", token);		    
+	           
+	        // res.json({
+	        // 	token: token,
+	        // 	rows:rows
+	        // });
 
-		    // res.send(rows);
-		    var result = 'rows : ' + JSON.stringify(rows) + '<br><br>' +
-	                'fields : ' + JSON.stringify(fields)  + '<br><br>' +
-	                'token : ' + JSON.stringify(token);
-	            // res.send(result);
-	        res.json({
-	        	token: token,
-	        	rows:rows
-	        });
+	        res.json(err||!rows? util.successFalse(err): util.successTrue(rows));
         }else{
-        	res.send('no data');
+        	console.log("no data");
+        	res.json(util.successFalse(null,null)); 
         }
 	  }else{
 	    console.log('Error while performing Query.', err);
@@ -93,7 +68,8 @@ exports.list = function(req, res, next){
 
 	        res.json(err||!rows? util.successFalse(err): util.successTrue(rows));
         }else{
-        	res.send('no data');
+        	console.log("no data");
+        	res.json(util.successFalse(null,null)); 
         }
 	  }else{
 	    console.log('Error while performing Query.', err);
