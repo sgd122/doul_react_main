@@ -15,6 +15,8 @@ const lanHost = address.ip();
 
 exports.post_login = function(req, res, next){
 
+	console.log("::login::"+req.cookies.jwt);
+	// console.log(req.cookies);
 	var userId = req.body.userId;
     var userPw = req.body.userPw;
     console.log(userId+"/"+userPw);
@@ -29,10 +31,6 @@ exports.post_login = function(req, res, next){
 		    // 생성한 토큰을 쿠키에 저장
 		    res.cookie("jwt", token);		    
 	           
-	        // res.json({
-	        // 	token: token,
-	        // 	rows:rows
-	        // });
 	        let v_return = util.successTrue(rows);
 	        v_return.token = token;
 	        res.json(err||!rows? util.successFalse(err): v_return);
@@ -48,6 +46,11 @@ exports.post_login = function(req, res, next){
 
 }
 
+exports.post_logout = function(req, res, next){
+	
+	res.clearCookie('jwt');
+
+}
 
 
 exports.list = function(req, res, next){
@@ -57,13 +60,6 @@ exports.list = function(req, res, next){
 	  if (!err){
 	    if (rows[0]!=undefined) {
 		    // console.log('The solution is: ', rows);
-		    // res.send(rows);
-		    var result = 'rows : ' + JSON.stringify(rows) + '<br><br>' +
-	                'fields : ' + JSON.stringify(fields);
-	            // res.send(result);
-	        // res.json({
-	        // 	rows:rows
-	        // });
 
 	        res.json(err||!rows? util.successFalse(err): util.successTrue(rows));
         }else{
@@ -76,7 +72,25 @@ exports.list = function(req, res, next){
 	  }
 	});
 
-	// res.send('profile ok');
+}
+
+exports.profile = function(req, res, next){
+
+	connection.query('select * from g5_member  where mb_email=? and mb_no=?',[req.decoded.id,req.decoded.pw], function(err, rows, fields) {
+	  if (!err){
+	    if (rows[0]!=undefined) {
+		    // console.log('The solution is: ', rows);
+
+	        res.json(err||!rows? util.successFalse(err): util.successTrue(rows));
+        }else{
+        	console.log("no data");
+        	res.json(util.successFalse(null,null)); 
+        }
+	  }else{
+	    console.log('Error while performing Query.', err);
+	    res.send(err);
+	  }
+	});
 
 }
 

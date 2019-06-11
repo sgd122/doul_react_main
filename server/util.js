@@ -67,14 +67,17 @@ util.parseError = function(errors){ //3
 // middlewares
 util.isLoggedin = function(req,res,next){ //4
   // var token = req.headers['x-access-token'];
-  
   let token = req.cookies.jwt;
   if (!token){ 
   	// return res.json(util.successFalse(null,'token is required!'));  	
   	console.log("token is required!");
   	if(util.getServerIp(req) == "::1"){	//로컬호스트 예외처리
 		console.log("localhost");  	
+		req.decoded = {};
+		req.decoded.id = "sgd0947@gmail.com";
+		req.decoded.pw = "2"; 
 		next();
+	
 	}else{
 		return res.json(util.successFalse(null,'token is required!'));  	
 	}
@@ -84,8 +87,11 @@ util.isLoggedin = function(req,res,next){ //4
 			console.log(util.successFalse(err));
 			if(util.getServerIp(req) == "::1"){	//로컬호스트 예외처리
 				console.log("localhost");  	
+				req.decoded = {};
+				req.decoded.id = "sgd0947@gmail.com";
+				req.decoded.pw = "2"; 
 				next();
-			}else{
+			}else{				
 				return res.json(util.successFalse(err));
 			}
 		}else{
@@ -105,8 +111,6 @@ util.isLoggedin = function(req,res,next){ //4
 
 			console.log("권한이 있어서 API 수행 가능");
 			console.log(decoded);
-			console.log(decoded.id);
-			console.log(decoded.pw);
 			// return true;
 			
 			next();

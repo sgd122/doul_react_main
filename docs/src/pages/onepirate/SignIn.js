@@ -14,8 +14,18 @@ import RFTextField from './modules/form/RFTextField';
 import FormButton from './modules/form/FormButton';
 import FormFeedback from './modules/form/FormFeedback';
 import compose from 'docs/src/modules/utils/compose';
+import utils from './modules/utils/utils';
 import axios from 'axios';
 import cookie from 'react-cookies';
+
+
+// import { createStore } from 'redux';                   // 스토어 생성하기 위해   
+// import reducers from './modules/reducers';        // 작성한 reducer
+// import { Provider } from 'react-redux';
+
+// const store = createStore(reducers);
+
+// const store = createStore( rootReducer );  // 스토어 생성
 
 const styles = theme => ({
   form: {
@@ -37,6 +47,7 @@ class SignIn extends React.Component {
     userPw:'',
   };
 
+  // 로그인이전 필수요소 처리
   validate = values => {
     const errors = required(['email', 'password'], values, this.props);
 
@@ -50,27 +61,22 @@ class SignIn extends React.Component {
     return errors;
   };
   
-
+  // 로그인함수처리
   handleSubmit = (e) => {        
-
     let form = new FormData();
     form.append('userId', e.email);
-    form.append('userPw',e.password);
-
-    axios.post('http://localhost:8080/backend/login', {
-      headers: { // 요청 헤더
-        'Content-type': 'application/x-www-form-urlencoded'
-      }
-      ,userId: e.email
+    form.append('userPw', e.password);
+    
+    axios.post(utils.axios_url()+'/backend/login', {
+       userId: e.email
       ,userPw: e.password
-      // timeout: 1000 // 1초 이내에 응답이 오지 않으면 에러로 간주
     })
-    .then(function (response) {
-      // cookie.save('user',response.data.token, { path: '/'});
-      console.log(response);
-      console.log(response.data.success);
+    .then(function (response) {      
       if(response.data.success){
-        console.log(response.data.token);
+        // cookie.set('jwt', response.data.token, { path: '/' });
+        console.log(response.data.data[0].mb_id);
+        console.log(response.data.data[0].mb_name);
+        this.props.dispatch( resize( window.innerWidth, window.innerHeight) ); 
       }else{
         console.log(response.data.message);
         alert(response.data.message);
@@ -82,23 +88,8 @@ class SignIn extends React.Component {
       console.log(error);
     });
 
-    
 
-  //   axios.get('http://localhost:8080/backend/list', {
-  //     headers: { // 요청 헤더
-  //       'Content-type': 'application/x-www-form-urlencoded'
-  //     }
-  //     ,userId: e.email
-  //     ,userPw: e.password
-  //     // timeout: 1000 // 1초 이내에 응답이 오지 않으면 에러로 간주
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //     // console.log(response.data.rows[0].mb_no);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
+
 
   };
 
@@ -117,7 +108,7 @@ class SignIn extends React.Component {
             <Typography variant="body2" align="center">
               {'아직 회원이 아니세요? '}
               <Link href="/onepirate/sign-up/" align="center" underline="always">
-                회원가입(Sign Up)
+                회원가입(Sign Up) 
               </Link>
             </Typography>
           </React.Fragment>

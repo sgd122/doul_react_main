@@ -15,6 +15,9 @@ import RFTextField from './modules/form/RFTextField';
 import FormButton from './modules/form/FormButton';
 import FormFeedback from './modules/form/FormFeedback';
 import compose from 'docs/src/modules/utils/compose';
+import utils from './modules/utils/utils';
+import axios from 'axios';
+import cookie from 'react-cookies';
 
 const styles = theme => ({
   form: {
@@ -47,7 +50,32 @@ class SignUp extends React.Component {
     return errors;
   };
 
-  handleSubmit = () => {};
+  handleSubmit = (e) => {
+    console.log(cookie.loadAll());
+    console.log("start"+cookie.load('jwt'));
+    axios.get(utils.axios_url()+'/backend/profile', {
+       userId: e.email
+      ,userPw: e.password
+    })
+    .then(function (response) {
+      console.log("=====================start===");
+      console.log(response);
+      console.log(response.data.success);
+      if(response.data.success){        
+        console.log(response.data.data[0].mb_id);
+        console.log(response.data.data[0].mb_name);
+      }else{
+        console.log(response.data.message);
+        alert(response.data.message);
+      }
+      console.log("=====================end===");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+  };
 
   render() {
     const { classes } = this.props;

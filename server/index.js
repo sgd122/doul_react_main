@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 var http = require('http');
 const path = require("path");
+const cors = require("cors");
 var serveStatic = require('serve-static');      //특정 폴더의 파일들을 특정 패스로 접근할 수 있도록 열어주는 역할
 const cookieParser = require('cookie-parser');
 
@@ -26,15 +27,22 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+// app.use(cors());
 app.use(cookieParser());
+app.use(function(req, res, next) { 
+// app.all('/*', function(req, res, next) {	
+  // res.header('Access-Control-Allow-Origin', '*');
+  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  // res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  //   // res.send();
 
+  // next();
 
-app.all('/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-    // res.send();
-
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Methods', 'POST, PUT, GET, DELETE');
+  // res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 /****************************
