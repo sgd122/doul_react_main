@@ -231,7 +231,7 @@
     "jss-plugin-props-sort": "^10.0.0-alpha.7",
     "jss-plugin-rule-value-function": "^10.0.0-alpha.7",
     "jss-plugin-vendor-prefixer": "^10.0.0-alpha.7",
-    "marked": "^0.6.2",
+    "marked": "^4.0.10",
     "mysql": "^2.17.1",
     "nprogress": "^0.2.0",
     "oracledb": "^3.1.2",
